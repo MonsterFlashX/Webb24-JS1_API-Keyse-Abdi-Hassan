@@ -1,35 +1,34 @@
-function displayData(data) 
-{
-  const dataContainer = document.getElementById('displayData');
-  const para = document.createElement('p');
-  const title = document.createElement('title');
-  const text = document.createElement('text');
-  const Phone = document.createElement('Phone');
-  const Email = document.createElement('Email');
-  const Name = document.createElement('Name');
-  const Gender = document.createElement('Gender');
-  para.textContent = `Title ${data.title}`;
-  dataContainer.appendChild(para);
-  const showData = document.createElement("displayData");
+const button = document.getElementById('fetchBtn');
+const output = document.getElementById('output');
 
-  console.log(displayData(data));
-}  
+button.addEventListener('click', fetchUser);
 
-async function fetchData()
-{ 
-  fetch('https://randomuser.me/api/')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log('Data received:', data);
-  })
-  .catch(error => {
-    console.error('There was a problem with the fetch operation:', error);
-  });  
+async function fetchUser() {
+  output.innerHTML = "";
+
+  try {
+    const response = await fetch('https://randomuser.me/api/');
+    const data = await response.json();
+    const user = data.results[0];
+
+    const img = document.createElement("img");
+    img.src = user.picture.large;
+
+    const name = document.createElement("p");
+    name.textContent = `Name: ${user.name.first} ${user.name.last}`;
+
+    const gender = document.createElement("p");
+    gender.textContent = `Gender: ${user.gender}`;
+
+    const email = document.createElement("p");
+    email.textContent = `Email: ${user.email}`;
+
+    const phone = document.createElement("p");
+    phone.textContent = `Phone: ${user.phone}`;
+
+    output.append(img, name, gender, email, phone);
+
+  } catch (error) {
+    console.error("Fel vid hämtning av data:", error);
+  }
 }
-
-console.log(fetchData());
