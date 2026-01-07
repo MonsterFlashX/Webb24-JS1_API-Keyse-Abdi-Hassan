@@ -1,41 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="API.css">
-    <title>Application Program Interface</title>
+    <title>Random User API</title>
+    <link rel="stylesheet" href="API.css">
 </head>
-<body id="body">
-    <div id="header">
-        <header>
-            <h1 id="h1">Application Program Interface</h1>
-        </header>
-    </div>
-    <div id="topnav">
-        <nav>
-            <a href="#">Introduction</a>
-            <a href="#">History</a>
-        </nav>
-    </div>
-    <div id="content">
-        <div class="userData">
-                <form id="form">
-                    <article>
-                        <strong id="strong"><u>Write down the API and send it afterwards</u></strong>
-                        <input type="text" id="displayData" placeholder="Enter info">
-                        <button type="submit" onclick="fetchData()">Press the button</button>
-                    </article>
-                 </form>
-            <div id="root"></div>
-            <div class="output"></div>
-    </div>
-        <div id="footer">
-            <footer>
-                <h3 id="h3">Copyright &amp; Application Program Interface 2024</h3>
-            </footer>
-        </div>
-        </div>
-        <script src="API.js"></script>
-    </body>
+<body>
+
+    <h1>Random User</h1>
+
+    <button type="button" id="fetchBtn">Hämta användare</button>
+
+    <div id="output"></div>
+
+  <script src="API.js"></script>
+</body>
 </html>  
